@@ -102,7 +102,7 @@ function! s:FindPort(dir, timer) abort
   let time = localtime()
   for name in readdir(a:dir)
     let path = a:dir . '/' . name
-    if time - getftime(path) <= 5 && getftype(path) ==# 'file'
+    if getftype(path) ==# 'file'
       call codeium#log#Info('Found port: ' . name)
       let s:server_port = name
       call timer_stop(a:timer)
